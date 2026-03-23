@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Build outputs
+dist/
+build/
+*/dist/
+*/build/
+
+# Environment files
+.env
+*/.env
+!.env.example
+*/.env.example
+
+# Uploads (local files)
+backend/uploads/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Coverage
+coverage/
+*/coverage/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Docker volumes
+pgdata/
