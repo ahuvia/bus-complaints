@@ -25,7 +25,7 @@ interface Props {
 
 export function CategoryPieChart({
   data,
-  title = "Complaints by Category",
+  title = "תלונות לפי קטגוריה",
 }: Props): React.ReactElement {
   const chartData = Object.entries(data).map(([name, value]) => ({
     name: formatCategory(name),
@@ -54,7 +54,7 @@ export function CategoryPieChart({
               <Cell key={index} fill={COLORS[index % COLORS.length]} />
             ))}
           </Pie>
-          <Tooltip formatter={(value: number) => [value, "Complaints"]} />
+          <Tooltip formatter={(value: number) => [value, "תלונות"]} />
           <Legend wrapperStyle={{ fontSize: 11 }} />
         </PieChart>
       </ResponsiveContainer>

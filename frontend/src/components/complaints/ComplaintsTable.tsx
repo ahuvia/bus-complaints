@@ -39,7 +39,7 @@ export function ComplaintsTable(): React.ReactElement {
   ) => setFilters((prev) => ({ ...prev, [key]: value, page: 1 }));
 
   const handleDelete = (id: string) => {
-    if (confirm("Delete this complaint?")) deleteComplaint(id);
+    if (confirm("למחוק את התלונה?")) deleteComplaint(id);
   };
 
   return (
@@ -48,7 +48,7 @@ export function ComplaintsTable(): React.ReactElement {
       <div className="flex flex-wrap gap-3 rounded-xl bg-white p-4 shadow-sm">
         <input
           type="text"
-          placeholder="Search bus line or notes…"
+          placeholder="חיפוש קו או הערות..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="rounded-lg border border-slate-300 px-3 py-2 text-sm w-56 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -62,9 +62,9 @@ export function ComplaintsTable(): React.ReactElement {
           }
           className="rounded-lg border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-          <option value="">All Directions</option>
-          <option value={ComplaintDirection.INBOUND}>Inbound</option>
-          <option value={ComplaintDirection.OUTBOUND}>Outbound</option>
+          <option value="">כל הכיוונים</option>
+          <option value={ComplaintDirection.INBOUND}>הלוך</option>
+          <option value={ComplaintDirection.OUTBOUND}>חזור</option>
         </select>
         <select
           onChange={(e) =>
@@ -75,9 +75,9 @@ export function ComplaintsTable(): React.ReactElement {
           }
           className="rounded-lg border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-          <option value="">All Statuses</option>
-          <option value={ComplaintStatus.PENDING}>Pending</option>
-          <option value={ComplaintStatus.RESOLVED}>Resolved</option>
+          <option value="">כל הסטטוסים</option>
+          <option value={ComplaintStatus.PENDING}>ממתין</option>
+          <option value={ComplaintStatus.RESOLVED}>טופל</option>
         </select>
         <select
           onChange={(e) =>
@@ -88,7 +88,7 @@ export function ComplaintsTable(): React.ReactElement {
           }
           className="rounded-lg border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-          <option value="">All Categories</option>
+          <option value="">כל הקטגוריות</option>
           {Object.values(ComplaintCategory).map((c) => (
             <option key={c} value={c}>
               {formatCategory(c)}
@@ -113,17 +113,17 @@ export function ComplaintsTable(): React.ReactElement {
           <thead className="bg-slate-50">
             <tr>
               {[
-                "Bus Line",
-                "Direction",
-                "Date",
-                "Time",
-                "Status",
-                "Category",
-                "Actions",
+                "קו אוטובוס",
+                "כיוון",
+                "תאריך",
+                "שעה",
+                "סטטוס",
+                "קטגוריה",
+                "פעולות",
               ].map((h) => (
                 <th
                   key={h}
-                  className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500"
+                  className="px-4 py-3 text-right text-xs font-semibold uppercase tracking-wide text-slate-500"
                 >
                   {h}
                 </th>
@@ -137,7 +137,7 @@ export function ComplaintsTable(): React.ReactElement {
                   colSpan={7}
                   className="px-4 py-8 text-center text-slate-400"
                 >
-                  Loading…
+                  טוען...
                 </td>
               </tr>
             ) : data?.data.length === 0 ? (
@@ -146,7 +146,7 @@ export function ComplaintsTable(): React.ReactElement {
                   colSpan={7}
                   className="px-4 py-8 text-center text-slate-400"
                 >
-                  No complaints found.
+                  לא נמצאו תלונות.
                 </td>
               </tr>
             ) : (
@@ -185,7 +185,7 @@ export function ComplaintsTable(): React.ReactElement {
                       <button
                         onClick={() => navigate(`/complaints/${complaint.id}`)}
                         className="rounded p-1 text-slate-500 hover:bg-slate-100"
-                        title="View"
+                        title="צפייה"
                       >
                         <Eye className="h-4 w-4" />
                       </button>
@@ -193,7 +193,7 @@ export function ComplaintsTable(): React.ReactElement {
                         <button
                           onClick={() => handleDelete(complaint.id)}
                           className="rounded p-1 text-red-400 hover:bg-red-50"
-                          title="Delete"
+                          title="מחיקה"
                         >
                           <Trash2 className="h-4 w-4" />
                         </button>
@@ -211,7 +211,7 @@ export function ComplaintsTable(): React.ReactElement {
       {data && data.totalPages > 1 && (
         <div className="flex items-center justify-between text-sm">
           <span className="text-slate-500">
-            Page {data.page} of {data.totalPages} ({data.total} total)
+            עמוד {data.page} מתוך {data.totalPages} (סה"כ {data.total})
           </span>
           <div className="flex gap-2">
             <button
@@ -219,14 +219,14 @@ export function ComplaintsTable(): React.ReactElement {
               onClick={() => setFilter("page", data.page - 1)}
               className="rounded-lg border border-slate-300 px-3 py-1.5 hover:bg-slate-50 disabled:opacity-40"
             >
-              Previous
+              הקודם
             </button>
             <button
               disabled={data.page >= data.totalPages}
               onClick={() => setFilter("page", data.page + 1)}
               className="rounded-lg border border-slate-300 px-3 py-1.5 hover:bg-slate-50 disabled:opacity-40"
             >
-              Next
+              הבא
             </button>
           </div>
         </div>

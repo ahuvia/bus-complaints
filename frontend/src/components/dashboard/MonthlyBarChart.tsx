@@ -17,7 +17,7 @@ interface Props {
 
 export function MonthlyBarChart({
   data,
-  title = "Daily Complaint Volume",
+  title = "נפח תלונות יומי",
 }: Props): React.ReactElement {
   return (
     <div className="rounded-xl bg-white p-5 shadow-sm">
@@ -35,8 +35,8 @@ export function MonthlyBarChart({
           />
           <YAxis tick={{ fontSize: 11 }} allowDecimals={false} />
           <Tooltip
-            formatter={(value: number) => [value, "Complaints"]}
-            labelFormatter={(label: string) => `Date: ${label}`}
+            formatter={(value: number) => [value, "תלונות"]}
+            labelFormatter={(label: string) => `תאריך: ${label}`}
           />
           <Bar dataKey="count" fill="#3b82f6" radius={[4, 4, 0, 0]} />
         </BarChart>

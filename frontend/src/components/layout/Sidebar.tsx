@@ -12,9 +12,9 @@ import { useAuth } from "@/hooks/useAuth";
 import { UserRole } from "@/types";
 
 const navItems = [
-  { label: "Dashboard", href: "/", icon: LayoutDashboard },
-  { label: "Complaints", href: "/complaints", icon: FileText },
-  { label: "Monthly Summary", href: "/summary", icon: BarChart2 },
+  { label: "לוח בקרא", href: "/", icon: LayoutDashboard },
+  { label: "תלונות", href: "/complaints", icon: FileText },
+  { label: "סיכום חודשי", href: "/summary", icon: BarChart2 },
 ];
 
 export function Sidebar(): React.ReactElement {
@@ -32,7 +32,7 @@ export function Sidebar(): React.ReactElement {
       {/* Logo */}
       <div className="flex items-center gap-3 px-6 py-5 border-b border-slate-700">
         <Bus className="h-7 w-7 text-blue-400" />
-        <span className="text-lg font-bold">Bus Complaints</span>
+        <span className="text-lg font-bold">תלונות אוטובוס</span>
       </div>
 
       {/* Nav */}
@@ -63,7 +63,7 @@ export function Sidebar(): React.ReactElement {
         {user?.role === UserRole.ADMIN && (
           <div className="mb-2">
             <span className="rounded bg-blue-700 px-2 py-0.5 text-xs text-white">
-              Admin
+              מנהל
             </span>
           </div>
         )}
@@ -72,7 +72,7 @@ export function Sidebar(): React.ReactElement {
           className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-slate-300 hover:bg-slate-800 hover:text-white transition-colors"
         >
           <LogOut className="h-4 w-4" />
-          Sign out
+          התנתקות
         </button>
       </div>
     </aside>

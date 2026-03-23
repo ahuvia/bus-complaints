@@ -14,11 +14,11 @@ export function NewComplaintPage(): React.ReactElement {
           className="mb-4 flex items-center gap-2 text-sm text-slate-600 hover:text-slate-900"
         >
           <ArrowLeft className="h-4 w-4" />
-          Back to list
+          חזרה לרשימה
         </button>
-        <h1 className="text-2xl font-bold text-slate-900">New Complaint</h1>
+        <h1 className="text-2xl font-bold text-slate-900">תלונה חדשה</h1>
         <p className="text-sm text-slate-500">
-          Fill in the details and attach supporting documents.
+          מלא את הפרטים וצרף מסמכים תומכים.
         </p>
       </div>
 

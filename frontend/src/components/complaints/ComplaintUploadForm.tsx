@@ -10,12 +10,12 @@ import { ComplaintDirection } from "@/types";
 import { cn } from "@/utils";
 
 const schema = z.object({
-  busLine: z.string().min(1, "Bus line is required"),
+  busLine: z.string().min(1, "שדה חובה"),
   direction: z.nativeEnum(ComplaintDirection, {
-    required_error: "Direction is required",
+    required_error: "שדה חובה",
   }),
-  incidentDate: z.string().min(1, "Date is required"),
-  incidentTime: z.string().regex(/^\d{2}:\d{2}$/, "Time must be HH:MM"),
+  incidentDate: z.string().min(1, "שדה חובה"),
+  incidentTime: z.string().regex(/^\d{2}:\d{2}$/, "פורמט שגוי, נדרש HH:MM"),
   notes: z.string().optional(),
 });
 
@@ -64,12 +64,12 @@ export function ComplaintUploadForm(): React.ReactElement {
       {/* Bus Line */}
       <div>
         <label className="block text-sm font-medium text-slate-700 mb-1">
-          Bus Line
+          קו אוטובוס
         </label>
         <input
           {...register("busLine")}
           type="text"
-          placeholder="e.g. 42"
+          placeholder="לדוגמא: 42"
           className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         {errors.busLine && (
@@ -80,15 +80,15 @@ export function ComplaintUploadForm(): React.ReactElement {
       {/* Direction */}
       <div>
         <label className="block text-sm font-medium text-slate-700 mb-1">
-          Direction
+          כיוון
         </label>
         <select
           {...register("direction")}
           className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-          <option value="">Select direction</option>
-          <option value={ComplaintDirection.INBOUND}>Inbound</option>
-          <option value={ComplaintDirection.OUTBOUND}>Outbound</option>
+          <option value="">בחר כיוון</option>
+          <option value={ComplaintDirection.INBOUND}>הלוך</option>
+          <option value={ComplaintDirection.OUTBOUND}>חזור</option>
         </select>
         {errors.direction && (
           <p className="mt-1 text-xs text-red-500">
@@ -101,7 +101,7 @@ export function ComplaintUploadForm(): React.ReactElement {
       <div className="grid grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-slate-700 mb-1">
-            Date
+            תאריך
           </label>
           <input
             {...register("incidentDate")}
@@ -116,7 +116,7 @@ export function ComplaintUploadForm(): React.ReactElement {
         </div>
         <div>
           <label className="block text-sm font-medium text-slate-700 mb-1">
-            Time
+            שעה
           </label>
           <input
             {...register("incidentTime")}
@@ -134,12 +134,12 @@ export function ComplaintUploadForm(): React.ReactElement {
       {/* Notes */}
       <div>
         <label className="block text-sm font-medium text-slate-700 mb-1">
-          Notes
+          הערות
         </label>
         <textarea
           {...register("notes")}
           rows={3}
-          placeholder="Describe the complaint..."
+          placeholder="תאר את התלונה..."
           className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
@@ -147,7 +147,7 @@ export function ComplaintUploadForm(): React.ReactElement {
       {/* File Dropzone */}
       <div>
         <label className="block text-sm font-medium text-slate-700 mb-1">
-          Attachment (PDF / JPEG / PNG, max 10MB)
+          צירוף קובץ (PDF / JPEG / PNG, עד 10MB)
         </label>
         <div
           {...getRootProps()}
@@ -176,9 +176,7 @@ export function ComplaintUploadForm(): React.ReactElement {
             </div>
           ) : (
             <p className="text-sm text-slate-500">
-              {isDragActive
-                ? "Drop file here"
-                : "Drag & drop or click to select"}
+              {isDragActive ? "שחרר כאן" : "גרור ושחרר, או לחץ לבחירה"}
             </p>
           )}
         </div>
@@ -186,7 +184,7 @@ export function ComplaintUploadForm(): React.ReactElement {
 
       {isError && (
         <p className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-600">
-          {(error as Error).message ?? "Failed to submit complaint"}
+          {(error as Error).message ?? "שליחת התלונה נכשלה"}
         </p>
       )}
 
@@ -195,7 +193,7 @@ export function ComplaintUploadForm(): React.ReactElement {
         disabled={isPending}
         className="w-full rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-50 transition-colors"
       >
-        {isPending ? "Submitting…" : "Submit Complaint"}
+        {isPending ? "שולח..." : "שלח תלונה"}
       </button>
     </form>
   );
