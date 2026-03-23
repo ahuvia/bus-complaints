@@ -28,10 +28,8 @@ export function MonthlySummaryPage(): React.ReactElement {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Monthly Summary</h1>
-          <p className="text-sm text-slate-500">
-            Detailed breakdown for the selected month
-          </p>
+          <h1 className="text-2xl font-bold text-slate-900">סיכום חודשי</h1>
+          <p className="text-sm text-slate-500">פירוט לחודש הנבחר</p>
         </div>
         <div className="flex items-center gap-3">
           <button
@@ -42,7 +40,7 @@ export function MonthlySummaryPage(): React.ReactElement {
             }}
             className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm hover:bg-slate-50"
           >
-            ← Prev
+            ‹ הקודם
           </button>
           <span className="text-sm font-medium">
             {format(new Date(year, month - 1, 1), "MMMM yyyy")}
@@ -58,13 +56,13 @@ export function MonthlySummaryPage(): React.ReactElement {
             }
             className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm hover:bg-slate-50 disabled:opacity-40"
           >
-            Next →
+            הבא ›
           </button>
         </div>
       </div>
 
       {isLoading ? (
-        <div className="text-slate-400">Loading…</div>
+        <div className="text-slate-400">טוען...</div>
       ) : summary ? (
         <>
           <StatCards
@@ -77,23 +75,23 @@ export function MonthlySummaryPage(): React.ReactElement {
           {/* Summary text highlights */}
           <div className="rounded-xl bg-white p-5 shadow-sm">
             <h3 className="mb-3 text-sm font-semibold text-slate-700">
-              Key Highlights
+              נקודות מפתח
             </h3>
             <ul className="space-y-1 text-sm text-slate-600">
               <li>
-                • Resolution rate: <strong>{resolutionRate}</strong>
+                • שיעור פתרון: <strong>{resolutionRate}</strong>
               </li>
               {topBusLine && (
                 <li>
-                  • Most complained line: <strong>{topBusLine}</strong> (
-                  {summary.byBusLine[topBusLine]} complaints)
+                  • קו עם הכי הרבה תלונות: <strong>{topBusLine}</strong> (
+                  {summary.byBusLine[topBusLine]} תלונות)
                 </li>
               )}
               {Object.entries(summary.byCategory).sort(
                 (a, b) => b[1] - a[1],
               )[0] && (
                 <li>
-                  • Top issue type:{" "}
+                  • סוג בעיה מוביל:{" "}
                   <strong>
                     {Object.entries(summary.byCategory)
                       .sort((a, b) => b[1] - a[1])[0][0]
@@ -114,7 +112,7 @@ export function MonthlySummaryPage(): React.ReactElement {
           {/* Direction breakdown */}
           <div className="rounded-xl bg-white p-5 shadow-sm">
             <h3 className="mb-3 text-sm font-semibold text-slate-700">
-              Direction Breakdown
+              פילוח לפי כיוון
             </h3>
             <div className="flex gap-8">
               {Object.entries(summary.byDirection).map(([dir, count]) => (
@@ -127,7 +125,7 @@ export function MonthlySummaryPage(): React.ReactElement {
           </div>
         </>
       ) : (
-        <p className="text-slate-400">No data for this period.</p>
+        <p className="text-slate-400">אין נתונים לתקופה זו.</p>
       )}
     </div>
   );

@@ -25,10 +25,8 @@ export function DashboardPage(): React.ReactElement {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Dashboard</h1>
-          <p className="text-sm text-slate-500">
-            Overview for the selected period
-          </p>
+          <h1 className="text-2xl font-bold text-slate-900">לוח בקרא</h1>
+          <p className="text-sm text-slate-500">סקירה לתקופה הנבחרת</p>
         </div>
         <div className="flex items-center gap-3">
           <button
@@ -39,7 +37,7 @@ export function DashboardPage(): React.ReactElement {
             }}
             className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm hover:bg-slate-50"
           >
-            ← Prev
+            ‹ הקודם
           </button>
           <span className="text-sm font-medium">
             {format(new Date(year, month - 1, 1), "MMMM yyyy")}
@@ -55,13 +53,13 @@ export function DashboardPage(): React.ReactElement {
             }
             className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm hover:bg-slate-50 disabled:opacity-40"
           >
-            Next →
+            הבא ›
           </button>
         </div>
       </div>
 
       {isLoading ? (
-        <div className="text-slate-400">Loading summary…</div>
+        <div className="text-slate-400">טוען...</div>
       ) : summary ? (
         <>
           <StatCards

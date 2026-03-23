@@ -31,18 +31,16 @@ export function LoginPage(): React.ReactElement {
           <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-600">
             <Bus className="h-8 w-8 text-white" />
           </div>
-          <h1 className="text-xl font-bold text-slate-900">Bus Complaints</h1>
+          <h1 className="text-xl font-bold text-slate-900">תלונות אוטובוס</h1>
           <p className="text-sm text-slate-500">
-            {mode === "login"
-              ? "Sign in to your account"
-              : "Create a new account"}
+            {mode === "login" ? "כניסה לחשבון" : "יצירת חשבון חדש"}
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1">
-              Email
+              אימייל
             </label>
             <input
               type="email"
@@ -54,7 +52,7 @@ export function LoginPage(): React.ReactElement {
           </div>
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1">
-              Password
+              סיסמא
             </label>
             <input
               type="password"
@@ -68,7 +66,7 @@ export function LoginPage(): React.ReactElement {
 
           {mutation.isError && (
             <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-600">
-              {(mutation.error as Error).message ?? "Authentication failed"}
+              {(mutation.error as Error).message ?? "שגיאה בהתחברות"}
             </p>
           )}
 
@@ -79,23 +77,21 @@ export function LoginPage(): React.ReactElement {
           >
             {mutation.isPending
               ? mode === "login"
-                ? "Signing in…"
-                : "Creating account…"
+                ? "מתחבר..."
+                : "יוצר חשבון..."
               : mode === "login"
-                ? "Sign In"
-                : "Create Account"}
+                ? "כניסה"
+                : "הרשמה"}
           </button>
         </form>
 
         <p className="mt-5 text-center text-sm text-slate-500">
-          {mode === "login"
-            ? "Don't have an account? "
-            : "Already have an account? "}
+          {mode === "login" ? "אין לך חשבון? " : "יש לך חשבון? "}
           <button
             onClick={() => setMode(mode === "login" ? "register" : "login")}
             className="font-medium text-blue-600 hover:underline"
           >
-            {mode === "login" ? "Sign up" : "Sign in"}
+            {mode === "login" ? "הרשם" : "כניסה"}
           </button>
         </p>
       </div>

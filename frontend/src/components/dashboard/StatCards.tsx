@@ -56,28 +56,28 @@ export function StatCards({
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
       <StatCard
-        title="Total Complaints"
+        title="סהק תלונות"
         value={totalComplaints}
         icon={<span className="text-xl">📋</span>}
         colorClass="bg-blue-50 text-blue-600"
       />
       <StatCard
-        title="Resolved"
+        title="טופלו"
         value={resolvedComplaints}
-        subtitle={`${resolutionRate} resolution rate`}
+        subtitle={`${resolutionRate} שיעור פתרון`}
         icon={<span className="text-xl">✅</span>}
         colorClass="bg-green-50 text-green-600"
       />
       <StatCard
-        title="Pending"
+        title="ממתינות"
         value={pendingComplaints}
         icon={<span className="text-xl">⏳</span>}
         colorClass="bg-yellow-50 text-yellow-600"
       />
       <StatCard
-        title="Top Bus Line"
+        title="קו מוביל"
         value={topBusLine ?? "—"}
-        subtitle="Most complaints"
+        subtitle="הכי הרבה תלונות"
         icon={<span className="text-xl">🚌</span>}
         colorClass="bg-purple-50 text-purple-600"
       />

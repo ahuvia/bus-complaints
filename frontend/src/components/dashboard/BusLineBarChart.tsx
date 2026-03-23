@@ -17,7 +17,7 @@ interface Props {
 
 export function BusLineBarChart({
   data,
-  title = "Complaints by Bus Line",
+  title = "תלונות לפי קו אוטובוס",
 }: Props): React.ReactElement {
   const chartData = Object.entries(data)
     .map(([busLine, count]) => ({ busLine, count }))
@@ -41,13 +41,13 @@ export function BusLineBarChart({
             tick={{ fontSize: 11 }}
             width={40}
           />
-          <Tooltip formatter={(value: number) => [value, "Complaints"]} />
+          <Tooltip formatter={(value: number) => [value, "תלונות"]} />
           <Legend wrapperStyle={{ fontSize: 11 }} />
           <Bar
             dataKey="count"
             fill="#8b5cf6"
             radius={[0, 4, 4, 0]}
-            name="Complaints"
+            name="תלונות"
           />
         </BarChart>
       </ResponsiveContainer>
